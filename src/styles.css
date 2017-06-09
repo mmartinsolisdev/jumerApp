@@ -1,1 +1,138 @@
-/* You can add global styles to this file, and also import other style files */
+.centvertical {
+    margin-top: 30px;
+  }
+  .altofijo{
+    height:160px;
+    max-height:160px;
+  }
+  /*Cambia el estilo del cursor*/
+  .cursorpointer{
+  	cursor:pointer;
+  	background-color: transparent;
+  }
+
+ .cent {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border:none;
+  }
+
+.page        {
+    bottom:0; 
+    padding-top:0px;
+    position: static;
+    top:0;  
+    width:100%; 
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  /* ANIMATIONS
+============================================================================= */
+
+.page.ng-leave  { z-index:9999; }
+.page.ng-enter  { z-index:8888; }
+
+/* page specific animations ------------------------ */
+
+/* home -------------------------- */
+.inicio.ng-leave{
+  animation: rotateFall 1s both ease-in;
+}
+.inicio.ng-enter{  
+  animation: EntradaT 1s both ease-in; 
+}
+
+
+.nosotros.ng-enter{   
+ animation: EntradaT 0.5s both ease-in;     
+}
+
+
+
+.actividades.ng-enter{
+animation: EntradaT 0.5s both ease-in;  
+}
+
+
+.galeria.ng-enter{
+animation: EntradaT 0.5s both ease-in;  
+}
+
+
+.contacto.ng-enter{
+animation: EntradaT 0.5s both ease-in;  
+}
+
+
+/* rotate and fall */
+@-webkit-keyframes rotateFall {
+  0% { -webkit-transform: rotateZ(0deg); }
+  20% { -webkit-transform: rotateZ(10deg); -webkit-animation-timing-function: ease-out; }
+  40% { -webkit-transform: rotateZ(17deg); }
+  60% { -webkit-transform: rotateZ(16deg); }
+  100% { -webkit-transform: translateY(100%) rotateZ(17deg); }
+}
+@-moz-keyframes rotateFall {
+  0% { -moz-transform: rotateZ(0deg); }
+  20% { -moz-transform: rotateZ(10deg); -moz-animation-timing-function: ease-out; }
+  40% { -moz-transform: rotateZ(17deg); }
+  60% { -moz-transform: rotateZ(16deg); }
+  100% { -moz-transform: translateY(100%) rotateZ(17deg); }
+}
+@keyframes rotateFall {
+  0% { transform: rotateZ(0deg); }
+  20% { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+  40% { transform: rotateZ(17deg); }
+  60% { transform: rotateZ(16deg); }
+  100% { transform: translateY(100%) rotateZ(17deg); }
+}
+
+
+
+@keyframes SalidaT {
+  from    {opacity: 100;}
+  to      {opacity: 0;}
+}
+@-moz-keyframes SalidaT  {
+ from    {opacity: 100;}
+  to      {opacity: 0;}
+}
+@-webkit-keyframes SalidaT  {
+  from    {opacity: 100;}
+  to      {opacity: 0;}
+}
+
+
+@keyframes EntradaT {
+  from    {opacity: 0;}
+  to      {opacity: 100;}
+}
+@-moz-keyframes EntradaT  {
+ from    {opacity: 0;}
+  to      {opacity: 100;}
+}
+@-webkit-keyframes EntradaT  {
+  from    {opacity: 0;}
+  to      {opacity: 100;}
+}
+
+
+/* rotate out newspaper */
+@-webkit-keyframes rotateOutNewspaper {
+  to { -webkit-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@-moz-keyframes rotateOutNewspaper {
+  to { -moz-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@keyframes rotateOutNewspaper {
+  to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
