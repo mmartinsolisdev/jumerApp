@@ -15,6 +15,7 @@ import { AdministradorComponent } from './components/administrador/administrador
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddNoticiaComponent } from './components/add-noticia/add-noticia.component';
 import { EditarNoticiaComponent } from './components/editar-noticia/editar-noticia.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     AdministradorComponent,
     NavbarComponent,
     AddNoticiaComponent,
-    EditarNoticiaComponent
+    EditarNoticiaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
