@@ -11,6 +11,11 @@
   <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
  <link rel="stylesheet" href="assets/materialize/css/materialize.css">
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+ <!--CSS para uso de SweetAlert -->
+ <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/dist/sweetalert.css">
+ <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/google/themes/google.css">
+
   <meta charset="utf-8">
   <title>JumerApp</title>
   <base href="/">
@@ -23,8 +28,49 @@
 
 <body>
   <app-root>Loading...</app-root>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--<script src="assets/materialize/js/materialize.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script src="assets/js/sweetalert-master/dist/sweetalert-dev.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script>
+    /*Slider*/
+  $(document).ready(function(){
+      $('.materialboxed').materialbox();
+      // $('.slider').slider({full_width: true});
+      $('.slider').slider();
+      /*Menu Nav*/
+      $(".button-collapse").sideNav();
+  });
+
+  //Prueba de alerta en SweetAlert
+  //function miAlerta() {
+  // swal("Correo enviado!", "", "success")
+  //}
+
+
+      $('.formu').submit(function() {
+        swal("Correo enviado!", "", "success")
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            //beforeSend: mostrarLoader,
+            // Mostramos un mensaje con la respuesta de PHP o se ejectua algun metodo deseado
+            success: function(data) {
+                  swal("Correo enviado!", "", "success")
+                  //$('.resultado').html(data);
+                  $('.formu').each(function(){ 
+                  this.reset();
+                  });
+            }
+        });  
+        return false; // Evitar ejecutar el submit del formulario.      
+    });
+
+
+</script>
 
 </body>
 </html>

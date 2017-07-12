@@ -1,3 +1,125 @@
-<p>
-  contacto works!
-</p>
+<br>
+    <div id="contcontacto">
+    <br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col l6">
+          <div class="col l12">
+            <h5 class="col s12 m12 l12">Dejanos tu mensaje</h5>
+          </div>
+          <div class="col l12 m12 s12">
+            <p>Envianos un correo para aclarar tus dudas sobre lo que hacemos y quienes somos. Comunicate.</p>
+          </div>
+          <div class="col l12 valign-wrapper">
+            <div class="col l1 valign-wrapper">
+             <i class="material-icons">directions</i>
+              </div>
+              <div class="col l11">
+                <p class="valign-wrapper"> Region: 103, sobre Av. Miguel Hidalgo, Parroquia Nuestra Señora de la Merced, Cancun, Quintana Roo.</p>
+              </div>
+          </div>
+          <div class="col l12 valign-wrapper">
+            <div class="col l1 valign-wrapper">
+             <i class="material-icons">phone</i>
+              </div>
+              <div class="col l11">
+                <p class="valign-wrapper"><strong>998-179-951-4.</strong> </p>
+              </div>
+          </div>
+          <div class="col l12 valign-wrapper">
+            <div class="col l1 valign-wrapper">
+             <i class="material-icons">email</i>
+              </div>
+              <div class="col l11">
+                <p class="valign-wrapper"><strong>juventudmercedariacancun@gmail.com</strong></p>
+              </div>
+          </div>
+        </div>
+
+
+
+          <form class="formu col s12 l6 m12" action="phpfiles/mail.php" method="post" id="formu">
+            <div class="row">       
+              <div class="input-field col s12 l12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate" name="nombre" required>
+                <label for="first_name">Nombre</label>
+              </div>
+            </div>
+              <div class="row">
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix">email</i>
+                  <input id="email" type="email" class="validate" name="email" required>
+                  <label for="email" data-error="wrong" data-success="right">Correo</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix">subject</i>
+                  <input id="icon_prefix" type="text" class="validate" name="asunto" required>
+                  <label for="first_name">Asunto</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="textarea1" class="materialize-textarea" name="com" required></textarea>
+                  <label for="textarea1">Mensaje</label>
+                </div>
+              </div>
+              <div class="row">             
+                <div class="col col l6">
+                  <div class="col l4">
+                      <button class="btn-flat waves-effect waves-yellow" type="submit" name="action">Enviar
+                          <i class="material-icons right">send</i>
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+
+     <div class="container">
+        <div class="row">
+          <div class="col l4 m6 s12 center centvertical">
+            <img class="responsive-img" width="240" src="assets/img/manos.jpg">
+          </div>
+          <div class="col l4 m6 s12 center centvertical">
+            <img class="responsive-img" width="240" src="assets/img/jubileo.png">
+          </div>
+          <div class="col l4 m12 s12 center">
+            <img class="responsive-img" width="240" height="170" src="assets/img/libresoy.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="col l12">
+            <h5 class="col s12 m12 l12">Gerarquia del grupo</h5>
+        </div>
+      </div>
+
+    </div>
+
+        
+<!--<script src="http://code.jquery.com/jquery-3.1.0.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/materialize.js"></script>-->
+
+<!--<script>
+  $(document).ready(function(){
+   // $('.materialboxed').materialbox();
+    //$('.slider').slider({full_width: true});
+   // $(".button-collapse").sideNav();
+   // $('input#input_text, textarea#textarea1').characterCounter();
+
+    
+   
+
+
+  });
+
+  </script>-->
