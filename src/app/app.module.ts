@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 //Necsario para importar la configuracion de firebase
-import { environment } from 'environments/environment';
+import { environment } from '../environments/environment';
 //Importamos los servicios
 import { FirebaseService } from './services/firebase.service';
 
@@ -27,12 +27,14 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 const appRoutes: Routes = [
-  {path:'', component:HomeComponent},
+  {path:'', redirectTo:'/home', pathMatch: 'full'},
+  {path:'home', component:HomeComponent},
   {path:'nosotros', component:NosotrosComponent},
   {path:'actividades', component:ActividadesComponent},
   {path:'galeria', component:GaleriaComponent},
-  {path:'contacto', component:ContactoComponent},
-  {path:'administrador', component:AdministradorComponent}
+  {path:'contacto', component:ContactoComponent},     
+  {path:'administrador', component:AdministradorComponent},
+  {path: '**', component:HomeComponent }
 ]
 
 @NgModule({

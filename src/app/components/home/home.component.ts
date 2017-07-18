@@ -8,6 +8,7 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class HomeComponent implements OnInit {
   noticias:any;
+  
 
   constructor(private firebaseService:FirebaseService) { }
 
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
       console.log(noticias);
       this.noticias = noticias;
     });
+    
   }
+
+  
 
 }
