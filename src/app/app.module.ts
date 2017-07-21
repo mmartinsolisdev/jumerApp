@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase, 'jumerApp'),
     AngularFireDatabaseModule
   ],
-  providers: [FirebaseService, AngularFireDatabaseModule],
+  providers: [FirebaseService, AngularFireDatabaseModule, AdministradorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
