@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 
@@ -12,6 +12,7 @@ export class AppComponent {
   exists = true;
   path: string;
   location: any;
+  @Input() nameParent:string;
 
   constructor(){
   //// this.toggleExists();
@@ -39,5 +40,4 @@ export class AppComponent {
     //this.path = this.router.url;
     console.log(this.path);
 }*/
-
 }

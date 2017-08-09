@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { Router } from '@angular/router';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-administrador',
@@ -8,21 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./administrador.component.css']
 })
 export class AdministradorComponent implements OnInit {
-  pathad:string;
 
-  constructor(public _router: Router) { 
-    this.obtener();
+  constructor(public nav: NavbarService) { 
+  //  this.obtener();
+  // this.pathad = this._router.url;
+  // console.log(this.pathad);
   }
 
   ngOnInit() {
-    
+    this.nav.hide();
   }
- obtener(){
-   // this.pathad = this.firebaseService.getRuta();
-    //console.log(this.path);
-   // return this.pathad;
-   this.pathad = this._router.url;
-   console.log(this.pathad);
-   return this.pathad;
- }
+
 }

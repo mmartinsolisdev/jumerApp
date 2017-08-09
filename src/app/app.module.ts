@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 //Importamos los servicios
 import { FirebaseService } from './services/firebase.service';
+import { NavbarService } from './services/navbar.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -59,7 +60,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase, 'jumerApp'),
     AngularFireDatabaseModule
   ],
-  providers: [FirebaseService, AngularFireDatabaseModule, AdministradorComponent],
+  providers: [FirebaseService, AngularFireDatabaseModule, NavbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

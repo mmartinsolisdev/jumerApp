@@ -1,4 +1,5 @@
-  <div class="navbar-fixed" id="barra">
+<div *ngIf="nav.visible">
+    <div class="navbar-fixed" id="barra">
       <nav class="amber lighten-1">
         <div class="nav-wrapper">
           <div class="container">
@@ -22,6 +23,7 @@
           </div>
       </nav>
     </div>
+</div>
 
 
 <!--<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
