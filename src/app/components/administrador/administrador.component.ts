@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { NavbarService } from '../../services/navbar.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administrador',
@@ -9,14 +11,24 @@ import { NavbarService } from '../../services/navbar.service';
 })
 export class AdministradorComponent implements OnInit {
 
-  constructor(public nav: NavbarService) { 
-  //  this.obtener();
-  // this.pathad = this._router.url;
-  // console.log(this.pathad);
-  }
+    public isLoggedIn: boolean;
 
-  ngOnInit() {
-    this.nav.hide();
-  }
+    constructor(public nav: NavbarService, private authService: AuthService, private router: Router) {
+      authService.isAuthenticated().subscribe(
+        success => this.isLoggedIn = success
+        
+      );
+      
+    
+    }
+
+    ngOnInit() {
+      this.nav.hide();
+    }
+
+    logout(){
+      this.authService.logout();
+      this.router.navigate(['/login']);      
+    }
 
 }

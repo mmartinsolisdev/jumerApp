@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 //Se necesita para el manejo de rutas
 import { RouterModule, Routes } from '@angular/router';
 //Necesario para el uso de Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 //Necsario para importar la configuracion de firebase
 import { environment } from '../environments/environment';
 //Importamos los servicios
 import { FirebaseService } from './services/firebase.service';
 import { NavbarService } from './services/navbar.service';
+import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddNoticiaComponent } from './components/add-noticia/add-noticia.component';
 import { EditarNoticiaComponent } from './components/editar-noticia/editar-noticia.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
   {path:'galeria', component:GaleriaComponent},
   {path:'contacto', component:ContactoComponent},     
   {path:'administrador', component:AdministradorComponent},
+  {path:'login', component:LoginComponent},
   {path: '**', component:HomeComponent }
 ]
 
@@ -51,16 +54,19 @@ const appRoutes: Routes = [
     AddNoticiaComponent,
     EditarNoticiaComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase, 'jumerApp'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [FirebaseService, AngularFireDatabaseModule, NavbarService],
+  providers: [FirebaseService, AngularFireDatabaseModule, NavbarService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

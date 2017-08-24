@@ -1,10 +1,17 @@
-<!--<div *ngIf="pathad == '/administrador'; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>La ruta es correcta {{pathad}}</ng-template>
+<div *ngIf="isLoggedIn !== true then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+        <a href="">Ir a inicio</a>
+</ng-template>
+
 <ng-template #elseBlock>
-    <app-navbar></app-navbar>
-    <app-root [nameParent]="pathad"></app-root> 
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-    Lobo
-</ng-template>-->
-<p>administrador</p>
+
+    <div class="row">
+        <div class="col l6 m6 s9">
+            <h5>ADMINISTRADOR</h5>
+        </div>
+        <div class="col l6 m6 s3 right-align">
+           <h6><a class="waves-effect waves-light btn blue" [routerLink]="['/login']" (click)="logout()">Logout</a></h6>
+        </div>
+    </div>
+</ng-template>
