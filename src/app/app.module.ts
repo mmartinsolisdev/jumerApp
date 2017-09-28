@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(environment.firebase, 'jumerApp'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
