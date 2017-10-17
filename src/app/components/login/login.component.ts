@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     const inputValue = this.form.value;
-    console.log(inputValue.email, inputValue.password);
     //Pasamos parametros al servicio de autenticacion de firebase
     this.AuthServ.login(inputValue.email, inputValue.password)
     .subscribe(

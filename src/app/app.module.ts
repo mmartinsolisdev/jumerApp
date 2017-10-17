@@ -23,10 +23,9 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AddNoticiaComponent } from './components/add-noticia/add-noticia.component';
-import { EditarNoticiaComponent } from './components/editar-noticia/editar-noticia.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +36,7 @@ const appRoutes: Routes = [
   {path:'galeria', component:GaleriaComponent},
   {path:'contacto', component:ContactoComponent},     
   {path:'administrador', component:AdministradorComponent},
+  {path:'noticia/:id', component:NoticiaComponent},
   {path:'login', component:LoginComponent},
   {path: '**', component:HomeComponent }
 ]
@@ -51,10 +51,9 @@ const appRoutes: Routes = [
     ContactoComponent,
     AdministradorComponent,
     NavbarComponent,
-    AddNoticiaComponent,
-    EditarNoticiaComponent,
     FooterComponent,
     LoginComponent,
+    NoticiaComponent,
   ],
   imports: [
     BrowserModule,

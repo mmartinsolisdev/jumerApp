@@ -52,9 +52,6 @@
                 <div class="col l12 m12 s12">
                     <label for="titulo">Titulo</label>
                     <input id="titulo" type="text" class="validate" [(ngModel)]="noticia.titulo" name="titulo" required #name="ngModel">
-                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                        Titulo requerido
-                    </div>
                 </div>
                 <!--Lista de Autores-->
                 <div class="col l6 m6 s6">
@@ -63,9 +60,6 @@
                           <option value="" disabled selected>Autores..</option>
                           <option value="{{autor.autor}}" *ngFor="let autor of listAutores | async">{{autor.autor}}</option>
                         </select>
-                        <div [hidden]="autor.valid || autor.pristine" class="alert alert-danger">
-                            Autor requerido
-                        </div>
                 </div>
                 <!--Seleccion de Fecha-->
                 <div class="col l6 m6 s6">
