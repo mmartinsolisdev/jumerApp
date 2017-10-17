@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import * as firebase from "firebase";
 
 @Component({
 selector: 'app-administrador',
@@ -16,7 +17,7 @@ export class AdministradorComponent implements OnInit {
   public listAutores: FirebaseListObservable<any[]>;
   public listCategorias: FirebaseListObservable<any[]>;
   public isLoggedIn: boolean;
-  noticia = {path: null, imagenName:null}
+  noticia = {path: null, imagenName:null, url:null}
 
   constructor(public nav: NavbarService,
   private authService: AuthService,
@@ -53,8 +54,10 @@ export class AdministradorComponent implements OnInit {
       selectedNoticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
       this.firebaseDB.database.ref('noticias/'+selectedNoticia.$key).update(selectedNoticia);
       console.log(selectedNoticia);
-      this.firebaseService.uploadFiles();
-      this.noticia = {path: null, imagenName:null}
+      this.firebaseService.uploadFiles().then((url) => 
+        console.log(url)
+      );
+      this.noticia = {path: null, imagenName:null, url:null}
     }
   }
 
@@ -62,9 +65,12 @@ export class AdministradorComponent implements OnInit {
     if(selectedNoticia.$key == undefined){
       this.noticia.path = "img/publicaciones/";
       this.noticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
-      let not = this.firebaseDB.database.ref('noticias/').push(this.noticia);
-      this.firebaseService.uploadFiles();
-      this.noticia = {path: null, imagenName:null}
+      this.firebaseService.uploadFiles().then((url) => {
+        this.noticia.url = url;
+        console.log(this.noticia.url);
+        this.firebaseDB.database.ref('noticias/').push(this.noticia);
+        this.noticia = {path: null, imagenName:null, url:null}
+      });
     }else{
       //No hace nada si ya existe la noticia
     }
@@ -73,12 +79,11 @@ export class AdministradorComponent implements OnInit {
   removeNota(selectedNoticia){
     console.log(selectedNoticia);
     this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
-    this.noticia = {path: null, imagenName:null}
+    this.noticia = {path: null, imagenName:null, url:null}
   }
 
   cancelarNota(selectedNoticia){
-    this.noticia = {path: null, imagenName:null}
+    this.noticia = {path: null, imagenName:null, url:null}
   }
-
 
 }

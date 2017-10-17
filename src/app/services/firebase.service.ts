@@ -4,59 +4,52 @@ import { Router } from '@angular/router';
 import * as firebase from "firebase";
 import { AngularFireModule } from 'angularfire2/';
 
-
-
 @Injectable()
 export class FirebaseService {
-  noticias: FirebaseListObservable<any[]>;
-  autores: FirebaseListObservable<any[]>;
-  categorias: FirebaseListObservable<any[]>;
-  noticia: FirebaseObjectObservable<any>;
+noticias: FirebaseListObservable<any[]>;
+autores: FirebaseListObservable<any[]>;
+categorias: FirebaseListObservable<any[]>;
+noticia: FirebaseObjectObservable<any>;
 
-  constructor(public db: AngularFireDatabase, private _router: Router) { }
- 
+constructor(public db: AngularFireDatabase, private _router: Router) { }
 
-  getNoticias(){
-    this.noticias = this.db.list('/noticias'); //as FirebaseListObservable<Noticias[]>;
-    return this.noticias;
-  }
-  /*getDetallenoticias(){
-    this.noticia = this.db.object('/noticias', {preserveSnapshot: true}); //as FirebaseObjectObservable<Noticias[]>;
-    this.noticia.subscribe(snapshot => {
-      console.log(snapshot.key)
-      console.log(snapshot.val())
-    });
-    return this.noticia;
-  }*/
+getNoticias(){
+this.noticias = this.db.list('/noticias'); //as FirebaseListObservable<Noticias[]>;
+return this.noticias;
+}
+/*getDetallenoticias(){
+this.noticia = this.db.object('/noticias', {preserveSnapshot: true}); //as FirebaseObjectObservable<Noticias[]>;
+this.noticia.subscribe(snapshot => {
+console.log(snapshot.key)
+console.log(snapshot.val())
+});
+return this.noticia;
+}*/
 
-  getAutores(){
-    this.autores = this.db.list('/autores');
-    return this.autores;
-  }
+getAutores(){
+this.autores = this.db.list('/autores');
+return this.autores;
+}
 
-  getCategorias(){
-    this.categorias= this.db.list('/categorias');
-    return this.categorias;
-  }
+getCategorias(){
+this.categorias= this.db.list('/categorias');
+return this.categorias;
+}
 
   uploadFiles(){
-    let storageRef = firebase.storage().ref();
-    for (let selectedFile of [(<HTMLInputElement>document.getElementById('imagen')).files[0]]) {
-      console.log(selectedFile);
+    return new Promise((resolve, reject) => {
+      let storageRef = firebase.storage().ref();
+      for (let selectedFile of [(<HTMLInputElement>document.getElementById('imagen')).files[0]]) {
       let imagesRef = storageRef.child('img/publicaciones/'+selectedFile.name);
-      imagesRef.put(selectedFile);
+      imagesRef.put(selectedFile).then(function(snapshot) {
+        //return snapshot.metadata.downloadURLs[0];
+        resolve(snapshot.metadata.downloadURLs[0]);
+        Error('Algo mal ha pasado');
+        //console.log("Archivo SUbido");
+      });
+      }
 
-
-      /*let imagesRef = storageRef.child('img/publicaciones/');
-      let fileName = (<HTMLInputElement>document.getElementById('imagen')).value;
-      let spaceRef = imagesRef.child(fileName);
-      //imagesRef.put(fileName);
-      console.log(fileName);*/
-    }
-
-    
-   // imagesRef.put(fileName).then((snapshot) =>{
-     // console.log('Uploaded a blob or file!');
-    //});
+     
+    });
   }
 }
