@@ -1,30 +1,31 @@
 <div class="slider">
-    <ul class="slides">
-      <li>
-        <img class="responsive-img" src="assets/img/slider-01.jpg"> 
-        <div class="caption center-align">
-          <h3>JUVENTUD MERCEDARIA!</h3>
-          <h5 class="text-lighten-3">Libres para liberar</h5>
-        </div>
-      </li>
-      <li>
-        <img class="responsive-img" src="assets/img/slider-02.jpg">
-        <div class="caption right-align">
-          <h3>LA VERDAD</h3>
-          <h5 class="text-lighten-3">Nos hace libres</h5>
-        </div>
-      </li>
-      <li>
-        <img class="responsive-img" src="assets/img/slider-04.jpg"> 
-        <div class="caption center-align">
-          <h3>CONOCE EL CAMINO</h3>
-          <h5 class="text-lighten-3">Libera con el amor de Cristo</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <ul class="slides">
+    <li>
+      <img class="responsive-img" src="assets/img/slider-01.jpg">
+      <div class="caption center-align">
+        <h3>JUVENTUD MERCEDARIA!</h3>
+        <h5 class="text-lighten-3">Libres para liberar</h5>
+      </div>
+    </li>
+    <li>
+      <img class="responsive-img" src="assets/img/slider-02.jpg">
+      <div class="caption right-align">
+        <h3>LA VERDAD</h3>
+        <h5 class="text-lighten-3">Nos hace libres</h5>
+      </div>
+    </li>
+    <li>
+      <img class="responsive-img" src="assets/img/slider-04.jpg">
+      <div class="caption center-align">
+        <h3>CONOCE EL CAMINO</h3>
+        <h5 class="text-lighten-3">Libera con el amor de Cristo</h5>
+      </div>
+    </li>
+  </ul>
+</div>
 <br><br><br>
 
+<<<<<<< HEAD
 
 
 
@@ -59,37 +60,69 @@
             <div class="card-action">
               <a [routerLink]="['/nosotros']" class="cursorpointer nosotrosmenu">NOSOTROS</a>
             </div>
+=======
+<div class="row">
+<div class="col s12 m6 l4" *ngFor="let item of noticias">
+  <div class="card small">
+    <div class="card-image">
+      <img src="{{item.url}}">
+      <span class="card-title">Card Title</span>
+    </div>
+    <div class="card-content">
+      <p>{{item.contenido}}
+      </p>
+    </div>
+    <div class="card-action">
+      <a [routerLink]="['/noticia/'+item.$key]">{{item.titulo}} - {{item.$key}}</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col s12 m4 l4">
+        <div class="card small">
+          <div class="card-image">
+            <img src="assets/img/nosotros.jpg">
+          </div>
+          <div class="card-content">
+            <p>Somos un grupo juvenil con carisma Mercedario fundando en Octubre del 2007 por el Padre Pedro Zavala...</p>
+          </div><br>
+          <div class="card-action">
+            <a [routerLink]="['/nosotros']" class="cursorpointer nosotrosmenu">NOSOTROS</a>
+>>>>>>> 986795f5058a458c1d6c69fb2018c220bfae5326
           </div>
         </div>
-
-        <div class="col s12 m4 l4">
-          <div class="card small">
-            <div class="card-image">
-              <img src="assets/img/actividades.jpg">
-            </div>
-            <div class="card-content">
-              <p>Realizamos direferentes actividades de acuerdo a nuestro carisma Mercedario que es el que impulsa...</p>
-            </div>
-            <div class="card-action">
-              <a [routerLink]="['/actividades']" class="cursorpointer actividadesmenu">ACTIVIDADES</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4 l4">
-          <div class="card small">
-            <div class="card-image">
-              <img src="assets/img/galeria.jpg">
-            </div>
-            <div class="card-content">
-              <p>Entra y conoce lo que hacemos por medio de nuestra galeria de fotos, ahi estan los eventos, reuniones...</p>
-            </div>
-            <div class="card-action">
-              <a [routerLink]="['/galeria']" class="cursorpointer galeriamenu">GALERIA</a>
-            </div>
-          </div>
-        </div>
-
       </div>
-   </div>
 
+      <div class="col s12 m4 l4">
+        <div class="card small">
+          <div class="card-image">
+            <img src="assets/img/actividades.jpg">
+          </div>
+          <div class="card-content">
+            <p>Realizamos direferentes actividades de acuerdo a nuestro carisma Mercedario que es el que impulsa...</p>
+          </div>
+          <div class="card-action">
+            <a [routerLink]="['/actividades']" class="cursorpointer actividadesmenu">ACTIVIDADES</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m4 l4">
+        <div class="card small">
+          <div class="card-image">
+            <img src="assets/img/galeria.jpg">
+          </div>
+          <div class="card-content">
+            <p>Entra y conoce lo que hacemos por medio de nuestra galeria de fotos, ahi estan los eventos, reuniones...</p>
+          </div>
+          <div class="card-action">
+            <a [routerLink]="['/galeria']" class="cursorpointer galeriamenu">GALERIA</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
