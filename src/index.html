@@ -9,12 +9,12 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Juventud Mercedaria</title>
   <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
-  <link rel="stylesheet" href="assets/materialize/css/materialize.css">
-  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="../assets/materialize/css/materialize.css">
+  <link rel="stylesheet" href="../assets/css/forms.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--CSS para uso de SweetAlert -->
-  <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/dist/sweetalert.css">
+  <link rel="stylesheet" type="text/css" href="../assets/js/sweetalert-master/dist/sweetalert.css">
   <!-- <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/google/themes/google.css">-->
 
   <meta charset="utf-8">
@@ -36,9 +36,9 @@
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
+  <script type="text/javascript" src="../assets/materialize/js/materialize.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>-->
-  <script src="assets/js/sweetalert-master/dist/sweetalert-dev.js"></script>
+  <script src="../assets/js/sweetalert-master/dist/sweetalert-dev.js"></script>
 
   <script>
     /*Slider*/
@@ -77,8 +77,9 @@
       return false; // Evitar ejecutar el submit del formulario.      
     });
 
-    $('#textarea1').val('New Text');
-    $('#textarea1').trigger('autoresize');
+    $(document).ready(function(){
+    $('.materialboxed').materialbox();
+    });
 
   </script>
 

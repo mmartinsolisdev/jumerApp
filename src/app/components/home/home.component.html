@@ -29,17 +29,18 @@
 
 <div class="row">
   <div class="col s12 m6 l4" *ngFor="let item of noticias">
-    <div class="card small">
-      <div class="card-image">
-        <img src="{{item.url}}">
-        <a [routerLink]="['/noticia/'+item.$key]">
+    <div class="card small hoverable">
+      <a [routerLink]="['/noticia/'+item.$key]">
+        <div class="card-image">
+          <img src="{{item.url}}">
           <span class="card-title">{{item.titulo}}</span>
-        </a>
-      </div>
+        </div>
+      </a>
       <div class="card-content">
-        <p>{{item.contenido}}</p>
+        <p class="truncate">{{item.contenido}}</p>
       </div>
     </div>
+
   </div>
 </div>
 
