@@ -11,6 +11,7 @@ export class NoticiaComponent implements OnInit {
   id: string;
   noticia: {};
   url: string;
+  public noticias:any[];
   constructor(private firebaseService: FirebaseService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,11 +19,15 @@ export class NoticiaComponent implements OnInit {
     console.log(this.id);
 
     this.firebaseService.getNoticia(this.id).subscribe(noticia => {
-      
-      this.noticia = noticia
-        this.url = noticia.url;
-        console.log(this.noticia);
+      this.noticia = noticia;
+      this.url = noticia.url;
+      console.log(this.noticia);
 
+    });
+    this.firebaseService.getNoticias().subscribe(noticias=> {
+     // this.noticias = noticias;
+      console.log(noticias);
+      this.noticias = Array(5).fill(4);
     });
   }
 
