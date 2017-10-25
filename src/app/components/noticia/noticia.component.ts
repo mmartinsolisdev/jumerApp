@@ -25,9 +25,9 @@ export class NoticiaComponent implements OnInit {
 
     });
     this.firebaseService.getNoticias().subscribe(noticias=> {
-     // this.noticias = noticias;
+      this.noticias = noticias;
       console.log(noticias);
-      this.noticias = Array(5).fill(4);
+      //this.noticias = Array(5).fill(4);
     });
   }
 
