@@ -15,6 +15,7 @@ export class NoticiaComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.id = this.route.snapshot.params['id'];
     console.log(this.id);
 
