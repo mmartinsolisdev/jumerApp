@@ -19,16 +19,16 @@
         <p style="text-align: justify;">{{noticia.contenido}}</p>
       </div>
       <div class="col l3 m3 s12 grey lighten-2"><br>
-        <div class="row col s12 m12 12 hoverable" *ngFor="let noticia of noticias">
-          <!--<a [routerLink]="['/noticia/'+item.$key]">-->
+        <div class="row col s12 m12 12 hoverable" *ngFor="let item of noticias" (click)="rutaActiva()">
+            <a [routerLink]="['/noticia/', item.$key]">
           <div class="card-image">
-            <img src="{{noticia.url}}" class="responsive-img">
+            <img src="{{item.url}}" class="responsive-img">
           </div>
+        </a>
           <span class="card-title">
-            <h5>{{noticia.titulo}}</h5>
-          </span>
-          <!-- </a>-->
-          <div class="divider"></div>
+            <h5>{{item.titulo}}</h5>
+          </span>    
+          <div class="divider white"></div>
         </div>
       </div>
     </div>
