@@ -18,18 +18,17 @@
     <div class="col l9 m9 s12">
       <p style="text-align: justify;">{{noticia.contenido}}</p>
     </div>
-    <div class="col l3 m3 s12">
+    <div class="col l3 m3 s12 grey lighten-2">
       <br>
-      <div class="row col s12 m12 12 hoverable z-depth-1" *ngFor="let noticia of noticias">
-        <a [routerLink]="['/noticia/'+noticia.$key]">
-          <div class="card-image" (click)="abrirNoticia()">
-            <img src="{{noticia.url}}" class="responsive-img">
+      <div class="row col s12 m12 12 hoverable" *ngFor="let item of noticias">
+        <a [routerLink]="['/noticia/', item.$key]"  (click)="rutaActiva(item.$key)">
+          <div class="card-image">
+            <img src="{{item.url}}" class="responsive-img">
           </div>
         </a>
         <span class="card-title">
-          <h5>{{noticia.titulo}}</h5>
+          <h5>{{item.titulo}}</h5>
         </span>
-
       </div>
     </div>
   </div>
