@@ -56,16 +56,17 @@
                 </div>
 
                 <div class="col l6 m6 s3">
+                        <!--El atributo #heroFrom es para resetear el formulario y limpiarlo cuando se le da clic a Cancelar-->
                         <form #heroForm="ngForm" ngNativeValidate (ngSubmit)="agregarNota(noticia)">
                                 <!--Campo Titulo-->
                                 <div class="col l12 m12 s12">
                                         <label for="titulo">Titulo</label>
-                                        <input id="titulo" type="text" class="validate" [(ngModel)]="noticia.titulo" name="titulo" required #name="ngModel">
+                                        <input class="" [(ngModel)]="noticia.titulo" required name="titulo" id="titulo">
                                 </div>
                                 <!--Lista de Autores-->
                                 <div class="col l6 m6 s6">
                                         <label for="autor">Autor</label>
-                                        <select class="browser-default" [(ngModel)]="noticia.autor" required name="autor" id="autor" #autor="ngModel">
+                                        <select class="browser-default" [(ngModel)]="noticia.autor" required name="autor" id="autor">
                                                 <option value="" disabled selected>Autores..</option>
                                                 <option value="{{autor.autor}}" *ngFor="let autor of listAutores | async">{{autor.autor}}</option>
                                         </select>
@@ -73,7 +74,7 @@
                                 <!--Seleccion de Fecha-->
                                 <div class="col l6 m6 s6">
                                         <label for="fecha">Fecha</label>
-                                        <input type="date" [(ngModel)]="noticia.fecha" required name="fecha" id="fecha">
+                                        <input class="" type="date" [(ngModel)]="noticia.fecha" required name="fecha" id="fecha">
                                 </div>
                                 <!--Lista de Categorias-->
                                 <div class="col l6 m6 s6">
@@ -90,37 +91,14 @@
                                                 <input type="file" id="imagen" required>
                                         </div>
                                         <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" id="imagenName" [(ngModel)]="noticia.imagenName" name="imagenName" required>
+                                                <input class="file-path" type="text" [(ngModel)]="noticia.imagenName" required name="imagenName" id="imagenName">
                                         </div>
                                 </div>
                                 <!--Lista de TextArea de contenido-->
                                 <div class="col l12 m12 s12">
                                         <label for="contenido">Contenido</label>
-                                        <div id="wysihtml5-toolbar" style="display: none;">
-                                                <a data-wysihtml5-command="bold">bold</a>
-                                                <a data-wysihtml5-command="italic">italic</a>
-
-                                                <!-- Some wysihtml5 commands require extra parameters -->
-                                                <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a>
-                                                <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a>
-                                                <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a>
-
-                                                <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
-                                                <a data-wysihtml5-command="createLink">insert link</a>
-                                                <div data-wysihtml5-dialog="createLink" style="display: none;">
-                                                        <label>
-                                                                Link:
-                                                                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-                                                        </label>
-                                                        <a data-wysihtml5-dialog-action="save">OK</a>
-                                                        <a data-wysihtml5-dialog-action="cancel">Cancel</a>
-                                                </div>
-                                        </div>
-                                        <textarea id="textarea1" type="text" class="validate" [(ngModel)]="noticia.contenido" required name="contenido">
-                                        </textarea>
-
+                                        <textarea class="materialize-textarea" type="text" [(ngModel)]="noticia.contenido" required name="contenido" id="contenido"></textarea>
                                         <br>
-
                                 </div>
                                 <input type="submit" class="waves-effect waves-light btn" value="Agregar">
                         </form>
@@ -138,11 +116,6 @@
                                         <a class="waves-effect waves-light btn" (click)="cancelarNota(noticia); heroForm.reset()">Cancelar</a>
                                 </div>
                         </div>
-
                 </div>
-
         </div>
-        
 </ng-template>
-<textarea id="textarea1" type="text" class="materialize-textarea validate" [(ngModel)]="noticia.contenido" required name="contenido">
-        </textarea>

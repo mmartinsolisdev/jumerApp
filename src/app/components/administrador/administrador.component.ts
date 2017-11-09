@@ -31,7 +31,7 @@ export class AdministradorComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Regresa el Scroll al top al momento de cambiar de ruta
+    // Regresa el Scroll al top al momento de cambiar de ruta
     window.scrollTo(0, 0)
     this.nav.hide();
     this.listNoticias = this.firebaseService.getNoticias();
@@ -46,16 +46,17 @@ export class AdministradorComponent implements OnInit {
 
   verNota(selectedNoticia) {
     this.noticia = selectedNoticia;
-    //console.log(this.noticia);
+    // console.log(this.noticia);
   }
 
   guardarNota(selectedNoticia) {
     if (selectedNoticia.$key == undefined) {
-      //No hacer nada si no se envia la Key
+      // No hacer nada si no se envia la Key
     } else {
       selectedNoticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
+      console.log(selectedNoticia.imagenName);
       this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
-      //console.log(selectedNoticia);
+      // console.log(selectedNoticia);
       this.firebaseService.uploadFiles().then((url) => {
         this.noticia.url = url;
         this.noticia = { path: null, imagenName: null, url: null }
@@ -69,12 +70,12 @@ export class AdministradorComponent implements OnInit {
       this.noticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
       this.firebaseService.uploadFiles().then((url) => {
         this.noticia.url = url;
-        //console.log(this.noticia.url);
+        // console.log(this.noticia.url);
         this.firebaseDB.database.ref('noticias/').push(this.noticia);
         this.noticia = { path: null, imagenName: null, url: null }
       });
     } else {
-      //No hace nada si ya existe la noticia
+      // No hace nada si ya existe la noticia
     }
   }
 
