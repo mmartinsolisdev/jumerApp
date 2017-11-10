@@ -55,10 +55,12 @@ export class AdministradorComponent implements OnInit {
     } else {
       selectedNoticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
       console.log(selectedNoticia.imagenName);
-      this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
       // console.log(selectedNoticia);
       this.firebaseService.uploadFiles().then((url) => {
-        this.noticia.url = url;
+        // this.noticia.url = url;
+        selectedNoticia.url = url;
+        this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
+        console.log(selectedNoticia.url);
         this.noticia = { path: null, imagenName: null, url: null }
       });
     }
@@ -66,7 +68,7 @@ export class AdministradorComponent implements OnInit {
 
   agregarNota(selectedNoticia) {
     if (selectedNoticia.$key == undefined) {
-      this.noticia.path = "img/publicaciones/";
+      this.noticia.path = 'img/publicaciones/';
       this.noticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
       this.firebaseService.uploadFiles().then((url) => {
         this.noticia.url = url;

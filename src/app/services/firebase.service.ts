@@ -42,18 +42,18 @@ export class FirebaseService {
             for (let selectedFile of [(<HTMLInputElement>document.getElementById('imagen')).files[0]]) {
                 let imagesRef = storageRef.child('img/publicaciones/' + selectedFile.name);
                 imagesRef.put(selectedFile).then(function (snapshot) {
-                    //return snapshot.metadata.downloadURLs[0];
+                    // return snapshot.metadata.downloadURLs[0];
                     resolve(snapshot.metadata.downloadURLs[0]);
                     Error('Algo mal ha pasado');
-                    //console.log("Archivo SUbido");
+                    // console.log("Archivo SUbido");
                 });
             }
 
         });
     }
 
-    getNoticia(id){
-        this.noticia = this.db.object('/noticias/'+id)
+    getNoticia(id) {
+        this.noticia = this.db.object('/noticias/' + id);
         return this.noticia;
     }
 }
