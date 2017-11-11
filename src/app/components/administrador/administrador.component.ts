@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-administrador',
@@ -32,7 +32,7 @@ export class AdministradorComponent implements OnInit {
 
   ngOnInit() {
     // Regresa el Scroll al top al momento de cambiar de ruta
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     this.nav.hide();
     this.listNoticias = this.firebaseService.getNoticias();
     this.listAutores = this.firebaseService.getAutores();
@@ -54,13 +54,15 @@ export class AdministradorComponent implements OnInit {
       // No hacer nada si no se envia la Key
     } else {
       selectedNoticia.imagenName = (<HTMLInputElement>document.getElementById('imagenName')).value;
-      console.log(selectedNoticia.imagenName);
-      // console.log(selectedNoticia);
+      // console.log(selectedNoticia.imagenName);
       this.firebaseService.uploadFiles().then((url) => {
-        // this.noticia.url = url;
-        selectedNoticia.url = url;
+        if (url == 1) {
+          selectedNoticia.url = selectedNoticia.url;
+        } else {
+          selectedNoticia.url = url;
+        }
+        // console.log(selectedNoticia.url);
         this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
-        console.log(selectedNoticia.url);
         this.noticia = { path: null, imagenName: null, url: null }
       });
     }
@@ -90,5 +92,4 @@ export class AdministradorComponent implements OnInit {
   cancelarNota(selectedNoticia) {
     this.noticia = { path: null, imagenName: null, url: null }
   }
-
 }

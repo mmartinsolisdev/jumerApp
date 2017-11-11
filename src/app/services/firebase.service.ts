@@ -38,15 +38,20 @@ export class FirebaseService {
 
     uploadFiles() {
         return new Promise((resolve, reject) => {
-            let storageRef = firebase.storage().ref();
-            for (let selectedFile of [(<HTMLInputElement>document.getElementById('imagen')).files[0]]) {
-                let imagesRef = storageRef.child('img/publicaciones/' + selectedFile.name);
-                imagesRef.put(selectedFile).then(function (snapshot) {
-                    // return snapshot.metadata.downloadURLs[0];
-                    resolve(snapshot.metadata.downloadURLs[0]);
-                    Error('Algo mal ha pasado');
-                    // console.log("Archivo SUbido");
-                });
+            const storageRef = firebase.storage().ref();
+            for (const selectedFile of [(<HTMLInputElement>document.getElementById('imagen')).files[0]]) {
+                if (selectedFile == undefined) {
+                    // No hacer nada si no hay archivo
+                    resolve(1);
+                } else {
+                    const imagesRef = storageRef.child('img/publicaciones/' + selectedFile.name);
+                    imagesRef.put(selectedFile).then(function (snapshot) {
+                        // return snapshot.metadata.downloadURLs[0];
+                        resolve(snapshot.metadata.downloadURLs[0]);
+                        Error('Algo mal ha pasado');
+                        // console.log("Archivo SUbido");
+                    });
+                }
             }
 
         });
