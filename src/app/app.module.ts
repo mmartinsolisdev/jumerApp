@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-//Se necesita para el manejo de rutas
+// Se necesita para el manejo de rutas
 import { RouterModule, Routes } from '@angular/router';
-//Necesario para el uso de Firebase
+// Necesario para el uso de Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-//Necsario para importar la configuracion de firebase
+// Necsario para importar la configuracion de firebase
 import { environment } from '../environments/environment';
-//Importamos los servicios
+// Importamos los servicios
 import { FirebaseService } from './services/firebase.service';
 import { NavbarService } from './services/navbar.service';
 import { AuthService } from './services/auth.service';
+// Importamos el plugin de Frola Editor
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
   {path:'nosotros', component:NosotrosComponent},
   {path:'actividades', component:ActividadesComponent},
   {path:'galeria', component:GaleriaComponent},
-  {path:'contacto', component:ContactoComponent},     
+  {path:'contacto', component:ContactoComponent},
   {path:'administrador', component:AdministradorComponent},
   {path:'noticia/:id', component:NoticiaComponent},
   {path:'login', component:LoginComponent},
@@ -63,7 +65,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [FirebaseService, AngularFireDatabaseModule, NavbarService, AuthService],
   bootstrap: [AppComponent]

@@ -9,12 +9,17 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Juventud Mercedaria</title>
   <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
-  <link rel="stylesheet" href="../assets/materialize/css/materialize.css">
-  <link rel="stylesheet" href="../assets/css/forms.css">
+  <!--<link rel="stylesheet" href="assets/materialize/css/materialize.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!--CSS para editor Froala-->
+  <!--<link href="node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet">
+  <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
+
   <!--CSS para uso de SweetAlert -->
-  <link rel="stylesheet" type="text/css" href="../assets/js/sweetalert-master/dist/sweetalert.css">
+  <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/dist/sweetalert.css">
   <!-- <link rel="stylesheet" type="text/css" href="assets/js/sweetalert-master/google/themes/google.css">-->
 
   <meta charset="utf-8">
@@ -22,7 +27,7 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/img/pestana-logo.png">
+  <link rel="icon" type="image/x-icon" href="src/assets/img/pestana-logo.png">
 </head>
 
 
@@ -35,19 +40,20 @@
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="../assets/materialize/js/materialize.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>-->
-  <script src="../assets/js/sweetalert-master/dist/sweetalert-dev.js"></script>
+  <!--<script type="text/javascript" src="src/assets/materialize/js/materialize.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="assets/js/sweetalert-master/dist/sweetalert-dev.js"></script>
 
   <script>
     /*Slider*/
-    $(document).ready(function () {
-      $('.materialboxed').materialbox();
+    var $jq = jQuery.noConflict();
+    $jq(document).ready(function () {
+      $jq(".materialboxed").materialbox();
       // $('.slider').slider({full_width: true});
-      $('.slider').slider();
+      $jq(".slider").slider();
       /*Menu Nav*/
-      $(".button-collapse").sideNav();
-      $('select').material_select();
+      $jq(".button-collapse").sideNav();
+      $jq('select').material_select();
     });
 
     //Prueba de alerta en SweetAlert
@@ -56,7 +62,7 @@
     //}
 
 
-    $('.formu').submit(function () {
+    $jq('.formu').submit(function () {
       swal("Correo enviado!", "", "success")
       // Enviamos el formulario usando AJAX
       $.ajax({
@@ -76,9 +82,6 @@
       return false; // Evitar ejecutar el submit del formulario.      
     });
 
-    $(document).ready(function () {
-      $('.materialboxed').materialbox();
-    });
 
   </script>
 
