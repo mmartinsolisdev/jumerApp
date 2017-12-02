@@ -84,7 +84,7 @@ export class AdministradorComponent implements OnInit {
   }
 
   removeNota(selectedNoticia) {
-    console.log(selectedNoticia);
+    // console.log(selectedNoticia);
     this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
     this.noticia = { path: null, imagenName: null, url: null }
   }

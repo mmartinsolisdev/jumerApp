@@ -97,28 +97,32 @@
                                 <!--Lista de TextArea de contenido-->
                                 <div class="col l12 m12 s12">
                                         <label for="contenido">Contenido</label>
-                                        <textarea class="materialize-textarea" type="text" [(ngModel)]="noticia.contenido" required name="contenido" id="contenido"></textarea>
-                                        <br><br>
-                                        
+                                        <!--<textarea class="materialize-textarea" type="text" [(ngModel)]="noticia.contenido" required name="contenido" id="contenido"></textarea>-->
+                                        <div [froalaEditor] [(ngModel)]="noticia.contenido" required name="contenido" id="contenido"></div>
                                         <br>
-                                        
-                                </div>
-                                <input type="submit" class="waves-effect waves-light btn" value="Agregar">
-                        </form>
-                        <hr>
-                        <br>
 
-                        <div>
-                                <div class="col l4 m4 s12">
-                                        <a class="waves-effect waves-light btn" (click)="removeNota(noticia)">Eliminar</a>
                                 </div>
-                                <div class="col l4 m4 s12">
-                                        <a class="waves-effect waves-light btn" (click)="guardarNota(noticia)">Guardar</a>
+
+                                <hr>
+                                <br>
+
+                                <div>
+                                        <div class="col l3 m3 s12">
+                                                <input type="submit" class="waves-effect waves-light btn" value="Agregar">
+                                        </div>
+                                        <div class="col l3 m3 s12">
+                                                <a class="waves-effect waves-light btn" (click)="removeNota(noticia)">Eliminar</a>
+                                        </div>
+                                        <div class="col l3 m3 s12">
+                                                <a class="waves-effect waves-light btn" (click)="guardarNota(noticia)">Actualizar</a>
+                                        </div>
+                                        <div class="col l3 m3 s12">
+                                                <a class="waves-effect waves-light btn" (click)="cancelarNota(noticia); heroForm.reset()">Limpiar</a>
+                                        </div>
                                 </div>
-                                <div class="col l4 m4 s12">
-                                        <a class="waves-effect waves-light btn" (click)="cancelarNota(noticia); heroForm.reset()">Cancelar</a>
-                                </div>
-                        </div>
+
+                        </form>
+
                 </div>
         </div>
 </ng-template>
