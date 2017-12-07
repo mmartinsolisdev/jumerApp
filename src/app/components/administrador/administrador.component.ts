@@ -6,6 +6,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
+declare var $ :any;
 
 @Component({
   selector: 'app-administrador',
@@ -17,7 +18,8 @@ export class AdministradorComponent implements OnInit {
   public listAutores: FirebaseListObservable<any[]>;
   public listCategorias: FirebaseListObservable<any[]>;
   public isLoggedIn: boolean;
-  noticia = { path: null, imagenName: null, url: null, contenido: null }
+  noticia = { path: null, imagenName: null, url: null, contenido: null };
+  public contentEditor: string;
 
   constructor(public nav: NavbarService,
     private authService: AuthService,
@@ -37,6 +39,7 @@ export class AdministradorComponent implements OnInit {
     this.listNoticias = this.firebaseService.getNoticias();
     this.listAutores = this.firebaseService.getAutores();
     this.listCategorias = this.firebaseService.getCategorias();
+
   }
 
   logout() {
@@ -46,9 +49,8 @@ export class AdministradorComponent implements OnInit {
 
   verNota(selectedNoticia) {
     this.noticia = selectedNoticia;
-    console.log(selectedNoticia.contenido);
-    this.noticia.contenido =  selectedNoticia.contenido;
-    // console.log(this.noticia);
+    this.contentEditor = selectedNoticia.contenido;
+    //console.log(this.contentEditor);
   }
 
   guardarNota(selectedNoticia) {
@@ -64,10 +66,12 @@ export class AdministradorComponent implements OnInit {
         } else {
           selectedNoticia.url = url;
         }
+        selectedNoticia.contenido = this.contentEditor;
         console.log(selectedNoticia.contenido);
         this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null };
+        selectedNoticia.contenido = null;
         console.log(selectedNoticia.contenido);
-        // this.noticia = { path: null, imagenName: null, url: null }     
       });
     }
   }
@@ -81,7 +85,7 @@ export class AdministradorComponent implements OnInit {
         this.noticia.url = url;
         // console.log(this.noticia.url);
         this.firebaseDB.database.ref('noticias/').push(this.noticia);
-        // this.noticia = { path: null, imagenName: null, url: null }
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null };
       });
     } else {
       // No hace nada si ya existe la noticia
@@ -91,10 +95,23 @@ export class AdministradorComponent implements OnInit {
   removeNota(selectedNoticia) {
     // console.log(selectedNoticia);
     this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
-    // this.noticia = { path: null, imagenName: null, url: null }
+    this.noticia = { path: null, imagenName: null, url: null, contenido: null };
   }
 
   cancelarNota(selectedNoticia) {
-   //  this.noticia = { path: null, imagenName: null, url: null }
+    this.noticia = { path: null, imagenName: null, url: null, contenido: null };
   }
+
+  public options: Object = {
+    placeholderText: 'Texto',
+    charCounterCount: true,
+    // angularIgnoreTags: ['style'],
+    // htmlAllowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    events: {
+      'froalaEditor.focus': function (e, editor) {
+       console.log(editor.html.get());
+      }
+    }
+  };
 }
+
