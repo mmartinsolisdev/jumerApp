@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../services/firebase.service';
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html',
-  styleUrls: ['./noticia.component.css']
+  styleUrls: ['./noticia.component.css'],
+  animations: [routerTransition()],
+  host: { '[@routerTransition]': '' }
 })
 export class NoticiaComponent implements OnInit {
   id: string;

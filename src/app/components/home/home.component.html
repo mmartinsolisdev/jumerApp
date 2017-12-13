@@ -27,24 +27,39 @@
 <br>
 <br>
 
-<div class="row">
-  <div class="col s12 m6 l4" *ngFor="let item of noticias">
-    <div class="card small hoverable">
-      <a [routerLink]="['/noticia/'+item.$key]">
-        <div class="card-image">
-          <img src="{{item.url}}">
+<div class="container">
+  <div class="row">
+    <div class="col s12 m4 l4" *ngFor="let item of noticias">
+      <div class="card small hoverable">
+        <div class="card-content">
+          <a [routerLink]="['/noticia/'+item.$key]">
+            <div class="card-image">
+              <img class="responsive-img" src="{{item.url}}">
+            </div>
+          </a>
+        </div>
+        <div class="card-action">
           <span class="card-title">{{item.titulo}}</span>
         </div>
-      </a>
-      <div class="card-content">
-        <p class="truncate">{{item.contenido}}</p>
       </div>
     </div>
-
   </div>
 </div>
 
-<div class="container">
+<!--<div class="row">
+    <div class="col s12 m6 l4" *ngFor="let item of noticias">
+      <div class="card medium">
+        <div class="card-image red">
+          <img src="{{item.url}}">
+        </div>
+        <div class="card-action blue">
+            <span>{{item.titulo}}</span>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+<!--<div class="container">
   <div class="row">
     <div class="col s12 m4 l4">
       <div class="card small">
@@ -90,4 +105,4 @@
     </div>
 
   </div>
-</div>
+</div>-->

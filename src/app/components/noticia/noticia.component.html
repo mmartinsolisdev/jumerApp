@@ -15,8 +15,9 @@
     </div>
     <!--Sección de Titulo, Contenido e informacion lateral-->
 
-    <div class="col l9 m9 s12 noticiaContenido"  innerHTML="{{noticia.contenido}}">
-     <!--<p style="text-align: justify; font-size: 18px;">{{noticia.contenido}}</p>-->
+    <!--<div class="col l9 m9 s12 noticiaContenido"  innerHTML="{{noticia.contenido}}">-->
+    <div class="col l9 m9 s12 noticiaContenido">
+        <div [froalaView]="noticia.contenido"></div>
     </div>
     <div class="col l3 m3 s12 grey lighten-4">
         <br>

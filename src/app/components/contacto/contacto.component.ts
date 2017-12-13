@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 @Component({
   selector: 'app-contacto',
   templateUrl: './contacto.component.html',
-  styleUrls: ['./contacto.component.css']
+  styleUrls: ['./contacto.component.css'],
+  animations: [routerTransition()],
+  host: { '[@routerTransition]': '' }
 })
 export class ContactoComponent implements OnInit {
 

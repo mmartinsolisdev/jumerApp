@@ -16,6 +16,9 @@ import { NavbarService } from './services/navbar.service';
 import { AuthService } from './services/auth.service';
 // Importamos el plugin de Frola Editor
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+// Requerido para las animiaciones entre vistas
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger, state, animate, transition, style } from '@angular/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -31,16 +34,16 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
 
 
 const appRoutes: Routes = [
-  {path:'', redirectTo:'/home', pathMatch: 'full'},
-  {path:'home', component:HomeComponent},
-  {path:'nosotros', component:NosotrosComponent},
-  {path:'actividades', component:ActividadesComponent},
-  {path:'galeria', component:GaleriaComponent},
-  {path:'contacto', component:ContactoComponent},
-  {path:'administrador', component:AdministradorComponent},
-  {path:'noticia/:id', component:NoticiaComponent},
-  {path:'login', component:LoginComponent},
-  {path: '**', component:HomeComponent }
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'nosotros', component: NosotrosComponent},
+  {path: 'actividades', component: ActividadesComponent},
+  {path: 'galeria', component: GaleriaComponent},
+  {path: 'contacto', component: ContactoComponent},
+  {path: 'administrador', component: AdministradorComponent},
+  {path: 'noticia/:id', component: NoticiaComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: HomeComponent }
 ]
 
 @NgModule({
@@ -67,7 +70,8 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [FirebaseService, AngularFireDatabaseModule, NavbarService, AuthService],
   bootstrap: [AppComponent]

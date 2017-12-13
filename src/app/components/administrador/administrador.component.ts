@@ -6,12 +6,15 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
-declare var $ :any;
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 @Component({
   selector: 'app-administrador',
   templateUrl: './administrador.component.html',
-  styleUrls: ['./administrador.component.css']
+  styleUrls: ['./administrador.component.css'],
+  // make fade in animation available to this component
+animations: [routerTransition()],
+host: { '[@routerTransition]': '' }
 })
 export class AdministradorComponent implements OnInit {
   public listNoticias: FirebaseListObservable<any[]>;
@@ -50,7 +53,7 @@ export class AdministradorComponent implements OnInit {
   verNota(selectedNoticia) {
     this.noticia = selectedNoticia;
     this.contentEditor = selectedNoticia.contenido;
-    //console.log(this.contentEditor);
+    // console.log(this.contentEditor);
   }
 
   guardarNota(selectedNoticia) {

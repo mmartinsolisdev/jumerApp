@@ -4,12 +4,15 @@ import { NavbarService } from '../../services/navbar.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [routerTransition()],
+  host: { '[@routerTransition]': '' }
 })
 export class LoginComponent implements OnInit {
 
