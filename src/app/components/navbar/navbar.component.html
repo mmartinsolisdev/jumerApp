@@ -1,5 +1,5 @@
 <div *ngIf="nav.visible">
-    <div class="navbar-fixed" id="barra">
+  <!--<div class="navbar-fixed" id="barra">
       <nav class="amber lighten-1">
         <div class="nav-wrapper">
           <div class="container">
@@ -20,17 +20,40 @@
           </div>
           </div>
       </nav>
+    </div>-->
+
+  <nav class="amber lighten-1">
+    <div class="nav-wrapper">
+      <div class="container">
+        <a [routerLink]="['/home']" class="brand-logo" id="homejumer" onClick="reply_click()">
+          <img src="assets/img/logoe.png">
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/nosotros']">Nosotros</a>
+          </li>
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/actividades']">Actividades</a>
+          </li>
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/contacto']">Contacto</a>
+          </li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/nosotros']">Nosotros</a>
+          </li>
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/actividades']">Actividades</a>
+          </li>
+          <li>
+            <a class="grey-text text-darken-2" [routerLink]="['/contacto']">Contacto</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 </div>
-
-
-<!--<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.8/js/materialize.min.js"></script>
-<script src="js/script.js"></script>
-<script>
-    /*Slider*/
-  $(document).ready(function(){
-    /*Menu Nav*/
-      $(".button-collapse").sideNav();
-  });
-</script>-->

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   image: any;
   noticia: any;
 
-  constructor(private firebaseService:FirebaseService) { }
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     /*this.firebaseService.getNoticias().subscribe((t) => {
@@ -27,12 +27,9 @@ export class HomeComponent implements OnInit {
       //console.log(this.noticias);
     });*/
     // Regresa el Scroll al top al momento de cambiar de ruta
-    window.scrollTo(0, 0)
-    this.firebaseService.getNoticias().subscribe(value=> {
+    window.scrollTo(0, 0);
+    this.firebaseService.getNoticias().subscribe(value => {
       this.noticias = value;
     });
-
   }
-
-
 }
