@@ -34,13 +34,34 @@
 
 <body>
   <app-root>
-    <div class="valign-wrapper" style="position: absolute;width: 100%;height: 100%;">
+    <!--<div class="valign-wrapper" style="position: absolute;width: 100%;height: 100%;">
       <div class="row">
         <div class="col l4">
-          <!--<div class="progress">
+          <div class="progress">
             <div class="indeterminate"></div>
-          </div>-->
+          </div>
           <img src="/assets/img/gif/loader.gif">
+        </div>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="valign-wrapper center-align" style="position: absolute;width: 100%;height: 100%;">
+        <div class="col l4 m4 s12 offset-l4  offset-m4">
+          
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-yellow-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -74,13 +95,12 @@
       );
       $jq('select').material_select();
     });
-    
 
-    function reply_click()
-{
-    console.log('Hola');
-    $jq('.slider').slider('start');
-}
+
+    function reply_click() {
+      console.log('Hola');
+      $jq('.slider').slider('start');
+    }
 
 
     //Prueba de alerta en SweetAlert

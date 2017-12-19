@@ -28,7 +28,7 @@ export class AdministradorComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private firebaseService: FirebaseService,
-    private firebaseDB: AngularFireDatabase,
+    public firebaseDB: AngularFireDatabase,
     private route: ActivatedRoute) {
     authService.isAuthenticated().subscribe(
       success => this.isLoggedIn = success
@@ -71,7 +71,7 @@ export class AdministradorComponent implements OnInit {
         }
         selectedNoticia.contenido = this.contentEditor;
         console.log(selectedNoticia.contenido);
-        this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
+        this.firebaseDB.object('noticias/' + selectedNoticia.$key).update(selectedNoticia);
         this.noticia = { path: null, imagenName: null, url: null, contenido: null };
         selectedNoticia.contenido = null;
         console.log(selectedNoticia.contenido);
@@ -87,7 +87,7 @@ export class AdministradorComponent implements OnInit {
       this.firebaseService.uploadFiles().then((url) => {
         this.noticia.url = url;
         // console.log(this.noticia.url);
-        this.firebaseDB.database.ref('noticias/').push(this.noticia);
+        this.firebaseDB.list('noticias/').push(this.noticia);
         this.noticia = { path: null, imagenName: null, url: null, contenido: null };
       });
     } else {
@@ -97,7 +97,7 @@ export class AdministradorComponent implements OnInit {
 
   removeNota(selectedNoticia) {
     // console.log(selectedNoticia);
-    this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
+    this.firebaseDB.object('noticias/' + selectedNoticia.$key).remove();
     this.noticia = { path: null, imagenName: null, url: null, contenido: null };
   }
 
