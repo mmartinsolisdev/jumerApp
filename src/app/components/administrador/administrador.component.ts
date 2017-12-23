@@ -69,11 +69,10 @@ export class AdministradorComponent implements OnInit {
         } else {
           selectedNoticia.url = url;
         }
-        selectedNoticia.contenido = this.contentEditor;
+        // selectedNoticia.contenido = this.contentEditor;
         console.log(selectedNoticia.contenido);
         this.firebaseDB.object('noticias/' + selectedNoticia.$key).update(selectedNoticia);
         this.noticia = { path: null, imagenName: null, url: null, contenido: null };
-        selectedNoticia.contenido = null;
         console.log(selectedNoticia.contenido);
       });
     }

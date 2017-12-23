@@ -13,6 +13,7 @@ import { routerTransition } from '../../_animations/fadeInAnimation';
 export class NoticiaComponent implements OnInit {
   id: string;
   noticia: {};
+  noticiasColumna: {};
   url: string;
   public noticias: any[];
   constructor(private firebaseService: FirebaseService, private router: Router, private route: ActivatedRoute) { }
@@ -25,9 +26,9 @@ export class NoticiaComponent implements OnInit {
       this.noticia = noticia;
       this.url = noticia.url;
     });
-    this.firebaseService.getNoticias().subscribe(noticias => {
-      this.noticias = noticias;
-      // console.log(noticias);
+    this.firebaseService.getNoticiasColumna().subscribe(noticias => {
+      this.noticiasColumna = noticias;
+      console.log(this.noticiasColumna);
       // this.noticias = Array(5).fill(4);
     });
   }
@@ -36,8 +37,8 @@ export class NoticiaComponent implements OnInit {
     if (this.id === key) {
       // NO hacer nada
     } else {
-      console.log(this.id);
-      console.log(key);
+      // console.log(this.id);
+      // console.log(key);
       window.scrollTo(0, 0);
       this.firebaseService.getNoticia(key).subscribe(noticia => {
         this.noticia = noticia;

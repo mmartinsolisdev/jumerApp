@@ -17,11 +17,12 @@
 
     <!--<div class="col l9 m9 s12 noticiaContenido"  innerHTML="{{noticia.contenido}}">-->
     <div class="col l9 m9 s12 noticiaContenido">
-        <div [froalaView]="noticia.contenido"></div>
+      <div [froalaView]="noticia.contenido"></div>
     </div>
+    
     <div class="col l3 m3 s12 grey lighten-4">
-        <br>
-        <div class="row col l12 m12 s6 hoverable" *ngFor="let item of noticias">
+      <br>
+        <div class="row col l12 m12 s6 hoverable" *ngFor="let item of noticias | slice:0:2">
           <a [routerLink]="['/noticia/', item.$key]" (click)="rutaActiva(item.$key)">
             <div class="card-image">
               <img src="{{item.url}}" class="responsive-img">
