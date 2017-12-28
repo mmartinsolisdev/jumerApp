@@ -26,8 +26,8 @@ export class NoticiaComponent implements OnInit {
       this.noticia = noticia;
       this.url = noticia.url;
     });
-    this.firebaseService.getNoticiasColumna().subscribe(noticias => {
-      this.noticiasColumna = noticias;
+    this.firebaseService.getNoticiasColumna().subscribe(noticiasC => {
+      this.noticiasColumna = noticiasC;
       console.log(this.noticiasColumna);
       // this.noticias = Array(5).fill(4);
     });

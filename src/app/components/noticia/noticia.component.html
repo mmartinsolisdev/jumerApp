@@ -22,7 +22,9 @@
     
     <div class="col l3 m3 s12 grey lighten-4">
       <br>
-        <div class="row col l12 m12 s6 hoverable" *ngFor="let item of noticias | slice:0:2">
+        
+      <div class="row col l12 m12 s6 hoverable" *ngFor="let item of noticiasColumna">
+          <!--<div class="row col l12 m12 s6 hoverable" *ngFor="let item of noticias | slice:0:2">-->
           <a [routerLink]="['/noticia/', item.$key]" (click)="rutaActiva(item.$key)">
             <div class="card-image">
               <img src="{{item.url}}" class="responsive-img">

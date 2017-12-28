@@ -18,9 +18,14 @@ export class FirebaseService {
         this.noticias = this.db.list('/noticias'); // as FirebaseListObservable<Noticias[]>;
         return this.noticias;
     }
-
+    // Query angularfire2 para llenar la columna de post con los 5 post mas recientes
     getNoticiasColumna() {
-        this.noticiasColumna = this.db.list('/noticias', ref => ref.orderByValue( 'fecha').limitTo(1));
+        this.noticiasColumna = this.db.list('/noticias', {
+            query: {
+                orderByChild: 'fecha',
+                limitToLast: 5,
+            }
+        });
         return this.noticiasColumna;
     }
     /*getDetallenoticias(){
