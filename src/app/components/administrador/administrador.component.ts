@@ -17,7 +17,8 @@ export class AdministradorComponent implements OnInit {
   public listAutores: FirebaseListObservable<any[]>;
   public listCategorias: FirebaseListObservable<any[]>;
   public isLoggedIn: boolean;
-  noticia = { path: null, imagenName: null, url: null, contenido: null }
+  noticia = { path: null, imagenName: null, url: null, contenido: null };
+  public editorContent: string;
 
   constructor(public nav: NavbarService,
     private authService: AuthService,
@@ -47,8 +48,7 @@ export class AdministradorComponent implements OnInit {
   verNota(selectedNoticia) {
     this.noticia = selectedNoticia;
     console.log(selectedNoticia.contenido);
-    this.noticia.contenido =  selectedNoticia.contenido;
-    // console.log(this.noticia);
+     // console.log();
   }
 
   guardarNota(selectedNoticia) {
@@ -67,7 +67,7 @@ export class AdministradorComponent implements OnInit {
         console.log(selectedNoticia.contenido);
         this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
         console.log(selectedNoticia.contenido);
-        // this.noticia = { path: null, imagenName: null, url: null }     
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null}
       });
     }
   }
@@ -81,7 +81,7 @@ export class AdministradorComponent implements OnInit {
         this.noticia.url = url;
         // console.log(this.noticia.url);
         this.firebaseDB.database.ref('noticias/').push(this.noticia);
-        // this.noticia = { path: null, imagenName: null, url: null }
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null}
       });
     } else {
       // No hace nada si ya existe la noticia
@@ -91,10 +91,23 @@ export class AdministradorComponent implements OnInit {
   removeNota(selectedNoticia) {
     // console.log(selectedNoticia);
     this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
-    // this.noticia = { path: null, imagenName: null, url: null }
+    this.noticia = { path: null, imagenName: null, url: null, contenido: null}
   }
 
   cancelarNota(selectedNoticia) {
-   //  this.noticia = { path: null, imagenName: null, url: null }
+  this.noticia = { path: null, imagenName: null, url: null, contenido: null }
+  }
+  public options: Object = {
+    placeholderText: 'Edit Your Content Here! MIke',
+    charCounterCount: true,
+    events : {
+      'froalaEditor.html.set' : function(e, editor) {
+        console.log(editor.selection.get());
+        
+       // editor= "PERRO";
+        
+      }
+    },
+    editOn: true
   }
 }
