@@ -6,11 +6,15 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 @Component({
   selector: 'app-administrador',
   templateUrl: './administrador.component.html',
-  styleUrls: ['./administrador.component.css']
+  styleUrls: ['./administrador.component.css'],
+  // make fade in animation available to this component
+animations: [routerTransition()],
+host: { '[@routerTransition]': '' }
 })
 export class AdministradorComponent implements OnInit {
   public listNoticias: FirebaseListObservable<any[]>;
@@ -18,13 +22,13 @@ export class AdministradorComponent implements OnInit {
   public listCategorias: FirebaseListObservable<any[]>;
   public isLoggedIn: boolean;
   noticia = { path: null, imagenName: null, url: null, contenido: null };
-  public editorContent: string;
+  public contentEditor: string;
 
   constructor(public nav: NavbarService,
     private authService: AuthService,
     private router: Router,
     private firebaseService: FirebaseService,
-    private firebaseDB: AngularFireDatabase,
+    public firebaseDB: AngularFireDatabase,
     private route: ActivatedRoute) {
     authService.isAuthenticated().subscribe(
       success => this.isLoggedIn = success
@@ -38,6 +42,7 @@ export class AdministradorComponent implements OnInit {
     this.listNoticias = this.firebaseService.getNoticias();
     this.listAutores = this.firebaseService.getAutores();
     this.listCategorias = this.firebaseService.getCategorias();
+
   }
 
   logout() {
@@ -47,8 +52,8 @@ export class AdministradorComponent implements OnInit {
 
   verNota(selectedNoticia) {
     this.noticia = selectedNoticia;
-    console.log(selectedNoticia.contenido);
-     // console.log();
+    this.contentEditor = selectedNoticia.contenido;
+    // console.log(this.contentEditor);
   }
 
   guardarNota(selectedNoticia) {
@@ -64,10 +69,11 @@ export class AdministradorComponent implements OnInit {
         } else {
           selectedNoticia.url = url;
         }
+        // selectedNoticia.contenido = this.contentEditor;
         console.log(selectedNoticia.contenido);
-        this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).update(selectedNoticia);
+        this.firebaseDB.object('noticias/' + selectedNoticia.$key).update(selectedNoticia);
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null };
         console.log(selectedNoticia.contenido);
-        this.noticia = { path: null, imagenName: null, url: null, contenido: null}
       });
     }
   }
@@ -80,8 +86,8 @@ export class AdministradorComponent implements OnInit {
       this.firebaseService.uploadFiles().then((url) => {
         this.noticia.url = url;
         // console.log(this.noticia.url);
-        this.firebaseDB.database.ref('noticias/').push(this.noticia);
-        this.noticia = { path: null, imagenName: null, url: null, contenido: null}
+        this.firebaseDB.list('noticias/').push(this.noticia);
+        this.noticia = { path: null, imagenName: null, url: null, contenido: null };
       });
     } else {
       // No hace nada si ya existe la noticia
@@ -90,24 +96,24 @@ export class AdministradorComponent implements OnInit {
 
   removeNota(selectedNoticia) {
     // console.log(selectedNoticia);
-    this.firebaseDB.database.ref('noticias/' + selectedNoticia.$key).remove();
-    this.noticia = { path: null, imagenName: null, url: null, contenido: null}
+    this.firebaseDB.object('noticias/' + selectedNoticia.$key).remove();
+    this.noticia = { path: null, imagenName: null, url: null, contenido: null };
   }
 
   cancelarNota(selectedNoticia) {
-  this.noticia = { path: null, imagenName: null, url: null, contenido: null }
+    this.noticia = { path: null, imagenName: null, url: null, contenido: null };
   }
+
   public options: Object = {
-    placeholderText: 'Edit Your Content Here! MIke',
+    placeholderText: 'Texto',
     charCounterCount: true,
-    events : {
-      'froalaEditor.html.set' : function(e, editor) {
-        console.log(editor.selection.get());
-        
-       // editor= "PERRO";
-        
+    // angularIgnoreTags: ['style'],
+    // htmlAllowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    events: {
+      'froalaEditor.focus': function (e, editor) {
+       console.log(editor.html.get());
       }
-    },
-    editOn: true
-  }
+    }
+  };
 }
+

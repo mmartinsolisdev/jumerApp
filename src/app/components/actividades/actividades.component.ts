@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { routerTransition } from '../../_animations/fadeInAnimation';
 
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.component.html',
-  styleUrls: ['./actividades.component.css']
+  styleUrls: ['./actividades.component.css'],
+  animations: [routerTransition()],
+  host: { '[@routerTransition]': '' }
 })
 export class ActividadesComponent implements OnInit {
 

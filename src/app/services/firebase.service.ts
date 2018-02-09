@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2/';
 @Injectable()
 export class FirebaseService {
     noticias: FirebaseListObservable<any[]>;
+    noticiasColumna: FirebaseListObservable<any[]>;
     autores: FirebaseListObservable<any[]>;
     categorias: FirebaseListObservable<any[]>;
     noticia: FirebaseObjectObservable<any>;
@@ -14,8 +15,18 @@ export class FirebaseService {
     constructor(public db: AngularFireDatabase, private _router: Router) { }
 
     getNoticias() {
-        this.noticias = this.db.list('/noticias'); //as FirebaseListObservable<Noticias[]>;
+        this.noticias = this.db.list('/noticias'); // as FirebaseListObservable<Noticias[]>;
         return this.noticias;
+    }
+    // Query angularfire2 para llenar la columna de post con los 5 post mas recientes
+    getNoticiasColumna() {
+        this.noticiasColumna = this.db.list('/noticias', {
+            query: {
+                orderByChild: 'fecha',
+                limitToLast: 5,
+            }
+        });
+        return this.noticiasColumna;
     }
     /*getDetallenoticias(){
     this.noticia = this.db.object('/noticias', {preserveSnapshot: true}); //as FirebaseObjectObservable<Noticias[]>;
